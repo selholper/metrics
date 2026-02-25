@@ -1,0 +1,69 @@
+### Base URL
+# @baseUrl = http://localhost:8080
+
+### ──────────────────────────────────────
+### Ping
+### ──────────────────────────────────────
+
+GET http://localhost:8080/ping
+Accept: application/json
+
+### ──────────────────────────────────────
+### Health Check
+### ──────────────────────────────────────
+
+GET http://localhost:8080/health
+Accept: application/json
+
+### ──────────────────────────────────────
+### Items — получить все элементы
+### ──────────────────────────────────────
+
+GET http://localhost:8080/items
+Accept: application/json
+
+### ──────────────────────────────────────
+### Items — создать новый элемент
+### ──────────────────────────────────────
+
+POST http://localhost:8080/items
+Content-Type: application/json
+
+{
+  "name": "item-4",
+  "value": "value-4"
+}
+
+### ──────────────────────────────────────
+### Items — создать ещё один элемент
+### ──────────────────────────────────────
+
+POST http://localhost:8080/items
+Content-Type: application/json
+
+{
+  "name": "item-4",
+  "value": "value-4"
+}
+
+### ──────────────────────────────────────
+### Items — невалидный JSON (ожидаем 400)
+### ──────────────────────────────────────
+
+POST http://localhost:8080/items
+Content-Type: application/json
+
+not a json
+
+### ──────────────────────────────────────
+### Items — недопустимый метод (ожидаем 405)
+### ──────────────────────────────────────
+
+DELETE http://localhost:8080/items
+Accept: application/json
+
+### ──────────────────────────────────────
+### Prometheus метрики (raw)
+### ──────────────────────────────────────
+
+GET http://localhost:8080/metrics
